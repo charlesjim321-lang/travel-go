@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Layout</title>
+    <title>Gogo Travel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="layout.css">
@@ -43,7 +43,7 @@
                 </p>
             </div>
         </div>
-        <div class="container-fluid cardshow">
+        <div class="container cardshow">
             <div class="row cardshow_item">
                 <div class="col-12 col-md-6 col-lg-3 mb-4">
                     <div class="card h-100">
@@ -147,6 +147,26 @@
                 </div>
             </div>
         </div>
+        <div class="container slide_group">
+            <h3 class="slide_txt">EXPLORE YOUR DREAM</h3>
+            <button id="prev" onclick="prev()">&laquo;</button>
+            <button id="next" onclick="next()">&raquo;</button>
+            <div class="box" >
+                <h4 id="txt1" class="slide1">Tokyo</h4>
+                <img src="img/12.jpg" alt="" id="box1" class="slide1">
+            </div>
+            <div class="box" >
+                <h4 id="txt2" class="slide2">Bangkok</h4>
+                <img src="img/13.jpg" alt="" id="box2" class="slide2">
+            </div>
+            <div class="box" >
+                <h4 id="txt3" class="slide3">Myanmar</h4>
+                <img src="img/14.jpg" alt="" id="box3" class="slide3">
+            </div>
+        </div>
+        <div class="container upward">
+            <button class="upward_btn" id="scrollup"><i class="fa-solid fa-angle-up"></i></button>
+        </div>
         <footer class="container-fluid footer-border">
             <div class="row footer-item m-4">
                 <div class="col-12 col-md-6 col-lg-3 support">
@@ -211,5 +231,34 @@
             </div>
         </footer>
     </div>
+    <script>
+        var box=1;
+        var txt=1;
+        function prev(){
+            document.querySelector("#box"+box).style.display="none";
+            box--;
+            document.querySelector("#txt"+txt).style.display="none";
+            txt--;
+            if(box<1,txt<1)box=3,txt=3;
+            document.querySelector("#box"+box).style.display="block";
+            document.querySelector("#txt"+txt).style.display="block";
+        }
+        function next(){
+            document.querySelector("#box"+box).style.display="none";
+            box++;
+            document.querySelector("#txt"+txt).style.display="none";
+            txt++;
+            if(box>3,txt>3)box=1,txt=1;
+            document.querySelector("#box"+box).style.display="block";
+            document.querySelector("#txt"+txt).style.display="block";
+        }
+        
+            document.querySelector("#scrollup").addEventListener("click",()=>{
+                window.scrollTo({
+                    top:0,
+                    behaviour:"smooth"
+                });
+            });
+    </script>
 </body>
 </html>
